@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "PMModul7",
-    "slug": "PMModul7",
+    "name": "modul7",
+    "slug": "modul7",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/task-list.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
