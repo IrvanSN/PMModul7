@@ -2,10 +2,12 @@ import { Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// package @expo/vector-icons perlu di install agar bisa menggunakan icon
+// [BUG] package @expo/vector-icons perlu di install agar bisa menggunakan icon
 import { FontAwesome5 } from '@expo/vector-icons';
 import { AboutScreen, TaskCompletedScreen, TaskScreen } from './screens';
+// [IMPROVEMENT] tambah package flash-message untuk memunculkan alert lebih cantik
 import FlashMessage from 'react-native-flash-message';
+import {SafeAreaProvider} from "react-native-safe-area-context";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -48,12 +50,12 @@ const BottomNavigator = () => {
       <Tab.Screen
         name="Task"
         component={TaskScreen}
-        options={{ title: 'All Task', unmountOnBlur: true }}
+        options={{ title: 'Tasks', unmountOnBlur: true }}
       />
       <Tab.Screen
         name="Completed"
         component={TaskCompletedScreen}
-        options={{ unmountOnBlur: true }}
+        options={{ title: 'Completed Tasks', unmountOnBlur: true }}
       />
       <Tab.Screen
         name="About"
@@ -66,7 +68,7 @@ const BottomNavigator = () => {
 
 const App = () => {
   return (
-    <>
+    <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
@@ -76,8 +78,9 @@ const App = () => {
           />
         </Stack.Navigator>
       </NavigationContainer>
+      {/*Setelah import FlashMessage pasang di global element aplikasi agar alert tersedia di semua halaman*/}
       <FlashMessage position="top" />
-    </>
+    </SafeAreaProvider>
   );
 };
 
